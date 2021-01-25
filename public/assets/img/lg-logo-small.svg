@@ -1,0 +1,9 @@
+<svg id="Componente_2_1" data-name="Componente 2 – 1" xmlns="http://www.w3.org/2000/svg" width="230" height="230" viewBox="0 0 230 230">
+  <text id="G" transform="translate(137 110)" font-size="70" font-family="Impact"><tspan x="0" y="0">G</tspan></text>
+  <path id="Caminho_1" data-name="Caminho 1" d="M119.863,130.26l-27.4-.16-6.006.16-.074-.23.074-.16V73.7H98.54v44.449h21.324V130.26Z" transform="translate(-28.46 -19)"/>
+  <path id="Caminho_3" data-name="Caminho 3" d="M148.46,249a115,115,0,1,1,115-115A115,115,0,0,1,148.46,249Zm0-220a105,105,0,1,0,105,105,105,105,0,0,0-105-105Z" transform="translate(-33.46 -19)"/>
+  <rect id="Retângulo_1" data-name="Retângulo 1" width="10" height="125" transform="translate(110 5)"/>
+  <rect id="Retângulo_2" data-name="Retângulo 2" width="125" height="10" transform="translate(52.5 124.5)"/>
+  <rect id="Retângulo_3" data-name="Retângulo 3" width="80" height="10" transform="translate(75 145)"/>
+  <rect id="Retângulo_4" data-name="Retângulo 4" width="60" height="10" transform="translate(85 165)"/>
+</svg>

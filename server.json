@@ -1,0 +1,16 @@
+{
+	"currencies": [
+		{
+			"id": 1,
+			"name": "Real",
+			"symbol": "BRL",
+			"isCrypto": false
+		},
+		{
+			"id": 2,
+			"name": "Bitcoin",
+			"symbol": "BTC",
+			"isCrypto": true
+		}
+	]
+}

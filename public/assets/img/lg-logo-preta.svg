@@ -1,0 +1,28 @@
+<svg id="Componente_1_1" data-name="Componente 1 – 1" xmlns="http://www.w3.org/2000/svg" width="713" height="230" viewBox="0 0 713 230">
+  <g id="lg-oficina">
+    <path id="Caminho_1" data-name="Caminho 1" d="M119.863,130.26l-27.4-.16-6.006.16-.074-.23.074-.16V73.7H98.54v44.449h21.324V130.26Z" transform="translate(-28.46 -19)"/>
+    <path id="Caminho_3" data-name="Caminho 3" d="M148.46,249a115,115,0,1,1,115-115A115,115,0,0,1,148.46,249Zm0-220a105,105,0,1,0,105,105,105,105,0,0,0-105-105Z" transform="translate(-33.46 -19)"/>
+    <rect id="Retângulo_1" data-name="Retângulo 1" width="10" height="125" transform="translate(110 5)"/>
+    <rect id="Retângulo_2" data-name="Retângulo 2" width="125" height="10" transform="translate(52.5 124.5)"/>
+    <rect id="Retângulo_3" data-name="Retângulo 3" width="80" height="10" transform="translate(75 145)"/>
+    <rect id="Retângulo_4" data-name="Retângulo 4" width="60" height="10" transform="translate(85 165)"/>
+  </g>
+  <text id="G" transform="translate(137 110)" font-size="70" font-family="Impact"><tspan x="0" y="0">G</tspan></text>
+  <g id="lg-oficina-2" data-name="lg-oficina">
+    <path id="Caminho_1-2" data-name="Caminho 1" d="M119.863,130.26l-27.4-.16-6.006.16-.074-.23.074-.16V73.7H98.54v44.449h21.324V130.26Z" transform="translate(-28.46 -19)"/>
+    <path id="Caminho_3-2" data-name="Caminho 3" d="M148.46,249a115,115,0,1,1,115-115A115,115,0,0,1,148.46,249Zm0-220a105,105,0,1,0,105,105,105,105,0,0,0-105-105Z" transform="translate(-33.46 -19)"/>
+    <rect id="Retângulo_1-2" data-name="Retângulo 1" width="10" height="125" transform="translate(110 5)"/>
+    <rect id="Retângulo_2-2" data-name="Retângulo 2" width="125" height="10" transform="translate(52.5 124.5)"/>
+    <rect id="Retângulo_3-2" data-name="Retângulo 3" width="80" height="10" transform="translate(75 145)"/>
+    <rect id="Retângulo_4-2" data-name="Retângulo 4" width="60" height="10" transform="translate(85 165)"/>
+    <path id="Caminho_4" data-name="Caminho 4" d="M0,0H90V10H0Z" transform="translate(253.428 123.5)"/>
+    <path id="Caminho_5" data-name="Caminho 5" d="M0,0H90V10H0Z" transform="translate(373.428 123.5)"/>
+    <path id="Caminho_6" data-name="Caminho 6" d="M0,0H90V10H0Z" transform="translate(493.428 123.5)"/>
+    <path id="Caminho_7" data-name="Caminho 7" d="M0,0H90V10H0Z" transform="translate(613.428 123.5)"/>
+  </g>
+  <text id="A" transform="translate(282 105)" font-size="65" font-family="Impact"><tspan x="0" y="0">A</tspan></text>
+  <text id="U" transform="translate(400 105)" font-size="65" font-family="Impact"><tspan x="0" y="0">U</tspan></text>
+  <text id="T" transform="translate(522 105)" font-size="65" font-family="Impact"><tspan x="0" y="0">T</tspan></text>
+  <text id="O" transform="translate(643 105)" font-size="65" font-family="Impact"><tspan x="0" y="0">O</tspan></text>
+  <text id="ELETROPEÇAS" transform="translate(252 205)" font-size="65" font-family="Impact" letter-spacing="0.185em"><tspan x="0" y="0">ELETROPEÇAS</tspan></text>
+</svg>
