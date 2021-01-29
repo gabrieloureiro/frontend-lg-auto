@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import mediaQuery from "~/styles/mediaQuery";
 
 export const StyledLayout = styled.div`
 	display: flex;

@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 import { Form as StyledForm } from "@unform/web";
+import UserCard from "~/components/UserCard";
+import mediaQuery from '~/styles/mediaQuery'
 
 export const Form = styled(StyledForm)`
 	display: flex;
@@ -31,4 +33,8 @@ export const Card = styled.div`
 		font-size: 14px;
 		padding: 6px 0;
 	}
+`;
+
+export const ClientCard = styled(UserCard)`
+
 `;

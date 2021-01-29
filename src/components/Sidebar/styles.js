@@ -72,8 +72,6 @@ export const NavigationLink = styled(Link)`
 	${(props) =>
 		props.active &&
 		`
-
-
     &::before {
       content: '';
       width: 4px;

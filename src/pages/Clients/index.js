@@ -10,6 +10,7 @@ import { LoggedLayout as Layout } from "~/components/Layout";
 import { Row } from '~/components/Row'
 import Input from '~/components/Input'
 import { Form, Button, Card } from './styles'
+import UserCard from "~/components/UserCard";
 
 
 const Clients = () => {
@@ -92,7 +93,7 @@ const Clients = () => {
 
 	return (
 		<Layout title="Clientes">
-			<Form ref={formRef} onSubmit={handleSubmit}>
+			{/* <Form ref={formRef} onSubmit={handleSubmit}>
 				{formItems.map(item => {
 					return (
 						<Input
@@ -103,19 +104,14 @@ const Clients = () => {
 					)
 				})}
 				<Button submit>Cadastrar</Button>
-			</Form>
+			</Form> */}
 			<Row full>
-				{clients.map(e => {
-					return (
-						<Card>
-							<p>Nome da empresa: {e.is_company ? e.company_name : "NÃO É UMA EMPRESA"}</p>
-							<p>Encarregado: {e.person_in_charge}</p>
-							<p>Email: {e.email}</p>
-							<p>CPF: {e.cpf}</p>
-							<p>CNPJ: {e.is_company ? e.cnpj : "NÃO É UMA EMPRESA"}</p>
-						</Card>
-					)
-				})}
+				<UserCard />
+				<UserCard />
+				<UserCard />
+				<UserCard />
+				<UserCard />
+
 			</Row>
 		</Layout>
 	);
