@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useField } from "@unform/core";
 import { StyledInput } from './styles';
 
-const Input = ({ name, icon: Icon, ...rest }) => {
+const Input = ({ name, fieldError, placeholder, icon: Icon, ...rest }) => {
+	const [containsError, setContainsError] = useState(false);
 	const { fieldName, defaultValue, error, registerField } = useField(name);
 	const inputRef = useRef(null);
 
@@ -14,20 +15,34 @@ const Input = ({ name, icon: Icon, ...rest }) => {
 		});
 	}, [fieldName, registerField]);
 
+	useEffect(() => {
+		if (error) {
+			setContainsError(true)
+		}
+	}, [error])
+
+	useEffect(() => {
+		if (!error) {
+			setContainsError(false)
+		}
+	}, [error])
+
 	return (
 		<>
+			{console.log(inputRef)}
 			<StyledInput
+				onChange={(event) => {
+					event.target.value !== "" ?
+						setContainsError(false) :
+						setContainsError(true)
+				}}
 				defaultValue={defaultValue}
 				name={fieldName}
 				ref={inputRef}
+				fieldError={containsError}
+				placeholder={containsError ? error : placeholder}
 				{...rest}
 			/>
-
-			{error && (
-				<p style={{ color: "#f10" }}>
-					{error}
-				</p>
-			)}
 		</>
 	);
 };

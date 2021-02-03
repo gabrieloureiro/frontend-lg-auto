@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Row as StyledRow } from '~/components/Row';
 
 export const UserCardWrapper = styled.div`
 	display: flex;
@@ -10,6 +11,8 @@ export const UserCardWrapper = styled.div`
 	min-height: 200px;
 	padding: 16px;
 	margin: 0 16px 16px 0;
+	border: 1.25px solid transparent;
+	cursor: pointer;
 
 	&:hover {
 		border: 1.25px solid ${props => props.theme.primaryColorLight};
@@ -45,7 +48,11 @@ export const UserCardWrapper = styled.div`
 	}
 `;
 
-export const UserImage = styled.div`
+export const Row = styled(StyledRow)`
+	justify-content: ${props => props.center ? 'center' : 'unset'};
+`;
+
+export const Image = styled.div`
 	margin: 0 auto;
 	border-radius: 50%;
 	width: 85px;
@@ -53,9 +60,21 @@ export const UserImage = styled.div`
 	background: #a1a1a1;
 `;
 
-export const UserName = styled.span`
+export const Name = styled.span`
 	display: flex;
 	justify-content: center;
 	padding: 16px 0;
 	color: ${props => props.theme.text};
+	cursor: text;
+`;
+
+export const MediumText = styled.span`
+	padding: 0 6px;
+	font-size: 14px;
+	color: ${props => props.theme.text};
+	cursor: text;
+
+	&:nth-child(1) {
+		border-right: 1px solid ${props => props.theme.body};
+	}
 `;

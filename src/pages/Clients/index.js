@@ -2,58 +2,42 @@
 import React, { useState, useEffect, useRef } from "react";
 import api from '~/services/api'
 
+import { LoggedLayout as Layout } from "~/components/Layout";
+
+import { formItems } from './formItems';
+import { clients } from '~/mocks/clients.json'
+
 import * as Yup from "yup";
 import getValidationErrors from "~/utils/getValidationErrors";
-import { FiUser, FiMail, FiPhone, FiCheckCircle } from "react-icons/fi";
-
-import { LoggedLayout as Layout } from "~/components/Layout";
-import { Row } from '~/components/Row'
+// import { FiUser, FiMail, FiPhone, FiCheckCircle } from "react-icons/fi";
 import Input from '~/components/Input'
-import { Form, Button, Card } from './styles'
 import UserCard from "~/components/UserCard";
+import Modal from '~/components/Modal'
+import AddEntityButton from "../../components/AddEntityButton";
+import FormButton from '~/components/FormButton'
+
+import { Form, Row } from './styles';
 
 
 const Clients = () => {
 	const formRef = useRef(null);
-	const [clients, setClients] = useState([])
+	// const [clients, setClients] = useState([])
+	const [openAddModal, setOpenAddModal] = useState(false);
 	const [dataUpdated, setUpdatedData] = useState(false)
 
-	const formItems = [
-		{
-			name: "company_name",
-			placeholder: "Nome da empresa",
-		},
-		{
-			name: "person_in_charge",
-			placeholder: "Nome do encarregado",
-		},
-		{
-			name: "email",
-			placeholder: "Email",
-		},
-		{
-			name: "cpf",
-			placeholder: "CPF",
-		},
-		{
-			name: "cnpj",
-			placeholder: "CNPJ",
-		},
-	];
+	// useEffect(() => {
+	// 	api.get('clients').then(response => {
+	// 		setClients(response.data)
+	// 	})
 
-	useEffect(() => {
-		api.get('clients').then(response => {
-			setClients(response.data)
-		})
+	// }, [])
 
-	}, [])
-
-	useEffect(() => {
-		api.get('clients').then(response => {
-			setClients(response.data)
-		})
-		setUpdatedData(false)
-	}, [dataUpdated])
+	// useEffect(() => {
+	// 	api.get('clients').then(response => {
+	// 		setClients(response.data)
+	// 	})
+	// 	setUpdatedData(false)
+	// }, [dataUpdated])
 
 	const handleSubmit = async (data, { reset }, event) => {
 		event.persist();
@@ -71,48 +55,81 @@ const Clients = () => {
 
 			await schema.validate(data, { abortEarly: false });
 
-			api.post('clients', {
-				is_company: true,
-				company_name: data.company_name,
-				person_in_charge: data.person_in_charge,
-				cpf: data.cpf,
-				cnpj: data.cnpj,
-				email: data.email
-			})
+			console.log("deucerto", data)
 
-			event.target.reset();
-			setUpdatedData(true)
+			// api.post('clients', {
+			// 	is_company: true,
+			// 	company_name: data.company_name,
+			// 	person_in_charge: data.person_in_charge,
+			// 	cpf: data.cpf,
+			// 	cnpj: data.cnpj,
+			// 	email: data.email
+			// })
+
+			// event.target.reset();
+
+			handleCloseAddModal();
+			setUpdatedData(true);
 
 		} catch (err) {
 			const errors = getValidationErrors(err);
 			formRef.current?.setErrors(errors);
 		}
+	}
 
+	const handleOpenAddModal = () => {
+		setOpenAddModal(true);
+	}
 
+	const handleCloseAddModal = () => {
+		setOpenAddModal(false);
 	}
 
 	return (
 		<Layout title="Clientes">
-			{/* <Form ref={formRef} onSubmit={handleSubmit}>
-				{formItems.map(item => {
+			<AddEntityButton onClick={handleOpenAddModal} />
+			<Row full>
+				{clients.map((client, index) => {
 					return (
-						<Input
-							id={item.name}
-							name={item.name}
-							placeholder={item.placeholder}
+						<UserCard
+							key={index}
+							is_company={client.is_company}
+							company_name={client.company_name}
+							person_in_charge={client.person_in_charge}
+							email={client.email}
 						/>
 					)
 				})}
-				<Button submit>Cadastrar</Button>
-			</Form> */}
-			<Row full>
-				<UserCard />
-				<UserCard />
-				<UserCard />
-				<UserCard />
-				<UserCard />
-
 			</Row>
+			{openAddModal ?
+				<Modal
+					title="Cadastrar cliente"
+					open={openAddModal}
+					onClose={handleCloseAddModal}
+				>
+					<Form ref={formRef} onSubmit={handleSubmit}>
+						{formItems.map((item, index) => {
+							return (
+								<Input
+									key={index}
+									id={item.name}
+									name={item.name}
+									placeholder={item.placeholder}
+								/>
+							)
+						})}
+						<Row end full>
+							<FormButton
+								cancel
+								onClose={handleCloseAddModal}
+							>
+								Cancelar
+							</FormButton>
+							<FormButton submit>Cadastrar</FormButton>
+						</Row>
+					</Form>
+				</Modal> : null}
+
 		</Layout>
 	);
 };
