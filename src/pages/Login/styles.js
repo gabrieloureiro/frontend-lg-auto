@@ -112,7 +112,7 @@ export const Button = styled.button`
 	letter-spacing: 1.2px;
 	text-transform: uppercase;
 	cursor: pointer;
-	transition: 0.5s all;
+	transition: all 0.5s ease;
 	border-radius: 8px;
 
 	&:hover {
