@@ -1,16 +1,28 @@
 {
-	"currencies": [
+	"clients": [
 		{
-			"id": 1,
-			"name": "Real",
-			"symbol": "BRL",
-			"isCrypto": false
+			"id": "1",
+			"image_url": "",
+			"is_company": true,
+			"company_name": "CONSTRUTORA SAMARIA",
+			"person_in_charge": "Bruno",
+			"cpf": "000.000.000-00",
+			"cnpj": "12.123.456/0001-56",
+			"email": "construtorasamaria@gmail.com",
+			"created_at": "2020-01-01",
+			"updated_at": "2020-01-01"
 		},
 		{
-			"id": 2,
-			"name": "Bitcoin",
-			"symbol": "BTC",
-			"isCrypto": true
+			"id": "2",
+			"image_url": "",
+			"is_company": false,
+			"company_name": null,
+			"person_in_charge": "Eudes",
+			"cpf": "123.123.123-88",
+			"cnpj": null,
+			"email": "eudes@uniquimica.com.br",
+			"created_at": "2020-02-02",
+			"updated_at": "2020-02-02"
 		}
 	]
 }

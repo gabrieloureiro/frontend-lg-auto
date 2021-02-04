@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import { Row as StyledRow } from '~/components/Row';
+import { Link as StyledLink } from "react-router-dom";
 
-export const UserCardWrapper = styled.div`
+export const UserCardWrapper = styled(StyledLink)`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

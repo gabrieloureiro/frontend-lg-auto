@@ -10,7 +10,7 @@ export const StyledInput = styled.input`
 	background-color: transparent;
 	border-bottom: 1px solid ${props => props.fieldError ? '#f10' : '#a1a1a1'};
 	color: ${props => '#a1a1a1'};
-	letter-spacing: 1.2px;
+	letter-spacing: 0.7px;
 	transition: all 0.2s ease;
 
 	&::-webkit-input-placeholder {

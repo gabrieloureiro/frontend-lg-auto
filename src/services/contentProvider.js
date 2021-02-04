@@ -2,6 +2,7 @@ import { lazy } from "react";
 const ROUTES = {
 	DASHBOARD: lazy(() => import("~/pages/Dashboard")),
 	CLIENTS: lazy(() => import("~/pages/Clients")),
+	CLIENTS_DETAILS: lazy(() => import("~/pages/Clients/ClientsDetails")),
 	SUPPLIERS: lazy(() => import("~/pages/Suppliers")),
 	TRANSACTIONS: lazy(() => import("~/pages/Transactions")),
 	TRANSFERS: lazy(() => import("~/pages/Transfers")),
@@ -30,6 +31,18 @@ export const AVAILABLE_ROUTES = [
 				title: "Clientes",
 				path: "/clients",
 				component: ROUTES.CLIENTS,
+			},
+		],
+	},
+	{
+		title: "Clientes",
+		prefixUrlMatch: "clients/details",
+		icon: "details",
+		routes: [
+			{
+				title: "Clientes",
+				path: "/clients/details",
+				component: ROUTES.CLIENTS_DETAILS,
 			},
 		],
 	},

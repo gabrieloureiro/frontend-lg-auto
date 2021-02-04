@@ -45,17 +45,20 @@ const Sidebar = ({ isLogged = false, collapse }) => {
 				<Navigation>
 					<NavigationList>
 						{AVAILABLE_ROUTES.map((item, i) => {
-							return (
-								<NavigationItem key={item.icon + i}>
-									<NavigationLink
-										to={item.routes[0].path}
-										active={currentRoute.includes(item.prefixUrlMatch)}
-									>
-										<Icon children={handleIcon(item.icon)} />
-										<Tooltip>{item.currentRoute}</Tooltip>
-									</NavigationLink>
-								</NavigationItem>
-							);
+							if (item.icon !== 'details') {
+								return (
+									<NavigationItem key={item.icon + i}>
+										<NavigationLink
+											to={item.routes[0].path}
+											active={currentRoute.includes(item.prefixUrlMatch)}
+										>
+											<Icon children={handleIcon(item.icon)} />
+											<Tooltip>{item.currentRoute}</Tooltip>
+										</NavigationLink>
+									</NavigationItem>
+								);
+							}
+							return null;
 						})}
 					</NavigationList>
 				</Navigation>

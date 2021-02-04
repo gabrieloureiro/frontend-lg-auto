@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect, useRef } from "react";
-import api from '~/services/api'
 
 import { LoggedLayout as Layout } from "~/components/Layout";
 
+import api from '~/services/api'
 import { formItems } from './formItems';
 import { clients } from '~/mocks/clients.json'
 
@@ -16,11 +16,13 @@ import Modal from '~/components/Modal'
 import AddEntityButton from "../../components/AddEntityButton";
 import FormButton from '~/components/FormButton'
 
+
 import { Form, Row } from './styles';
 
 
 const Clients = () => {
 	const formRef = useRef(null);
+
 	// const [clients, setClients] = useState([])
 	const [openAddModal, setOpenAddModal] = useState(false);
 	const [dataUpdated, setUpdatedData] = useState(false)
@@ -93,6 +95,7 @@ const Clients = () => {
 					return (
 						<UserCard
 							key={index}
+							id={client.id}
 							is_company={client.is_company}
 							company_name={client.company_name}
 							person_in_charge={client.person_in_charge}
@@ -129,7 +132,6 @@ const Clients = () => {
 						</Row>
 					</Form>
 				</Modal> : null}
-
 		</Layout>
 	);
 };

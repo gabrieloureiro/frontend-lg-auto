@@ -1,7 +1,7 @@
 export const lightTheme = {
 	title: "light",
 	body: "#f1f1f1",
-	text: "#181818",
+	text: "rgb(18, 18, 20)",
 	background: "#fff",
 	primaryColor: "#ad5739",
 	primaryColorLight: "#d66a45"
@@ -10,8 +10,8 @@ export const lightTheme = {
 export const darkTheme = {
 	title: "dark",
 	text: "#f1f1f1",
-	body: "#343233",
-	background: "#272727",
+	body: "rgb(18, 18, 20)",
+	background: "rgb(32, 32, 36)",
 	primaryColor: "#ad5739",
 	primaryColorLight: "#d66a45"
 };
