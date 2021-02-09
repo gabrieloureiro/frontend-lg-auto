@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import currency from "./currency/reducer";
+import clients from "./clients/reducer";
+import client from "./client/reducer";
 
 export default combineReducers({
-	currency,
+	clients,
+	client
 });

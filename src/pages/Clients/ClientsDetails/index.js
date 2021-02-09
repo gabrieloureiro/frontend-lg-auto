@@ -3,29 +3,26 @@ import { LoggedLayout as Layout } from "~/components/Layout";
 
 import api from '~/services/api';
 
+import { useSelector } from 'react-redux';
+
 const ClientsDetails = () => {
 
-	let WINDOW = window.location;
-	let QUERY = WINDOW.search;
-	let PATHNAME = WINDOW.pathname;
-
-	const [currentClient, setCurrentClient] = useState({})
+	const clientId = useSelector(state => state.client)
+	const [currentClient, setCurrentClient] = useState({});
 
 	useEffect(() => {
-		if (PATHNAME === '/clients/details') {
-			if (QUERY !== '') {
-				api.get('clients').then(response => {
-					let queryString = QUERY.replace('?id=', '');
-					let client = response.data.filter(client => { return client.id === queryString })[0]
-					setCurrentClient(client)
-				})
-			}
-		}
-	}, [PATHNAME, QUERY])
-
+		api.get(`clients/${clientId}`).then(response => {
+			setCurrentClient(response.data)
+		})
+	}, [clientId])
 
 	return (
-		<Layout title={`Usuario`}>{console.log(currentClient)}</Layout>
+		<Layout title={currentClient ?
+			currentClient.is_company ?
+				currentClient.company_name :
+				currentClient.person_in_charge : 'Carregando...'
+		}>
+			{console.log(currentClient)}</Layout>
 
 	)
 }

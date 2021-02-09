@@ -1,45 +1,47 @@
 /* eslint-disable no-unused-expressions */
-import React, { useState, useEffect, useRef } from "react";
-
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { LoggedLayout as Layout } from "~/components/Layout";
+import { formItems } from './formItems';
 
 import api from '~/services/api'
-import { formItems } from './formItems';
-import { clients } from '~/mocks/clients.json'
 
+import { useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+// import { addClient } from '~/store/modules/clients/actions';
+import { getClientId } from '~/store/modules/client/actions';
+
+// import { FiUser, FiMail, FiPhone, FiCheckCircle } from "react-icons/fi";
 import * as Yup from "yup";
 import getValidationErrors from "~/utils/getValidationErrors";
-// import { FiUser, FiMail, FiPhone, FiCheckCircle } from "react-icons/fi";
 import Input from '~/components/Input'
 import UserCard from "~/components/UserCard";
 import Modal from '~/components/Modal'
 import AddEntityButton from "../../components/AddEntityButton";
 import FormButton from '~/components/FormButton'
 
-
 import { Form, Row } from './styles';
-
 
 const Clients = () => {
 	const formRef = useRef(null);
+	const dispatch = useDispatch();
+	const history = useHistory();
 
-	// const [clients, setClients] = useState([])
+	const [clients, setClients] = useState([])
 	const [openAddModal, setOpenAddModal] = useState(false);
 	const [dataUpdated, setUpdatedData] = useState(false)
 
-	// useEffect(() => {
-	// 	api.get('clients').then(response => {
-	// 		setClients(response.data)
-	// 	})
+	useEffect(() => {
+		api.get('clients').then(response => {
+			setClients(response.data)
+		})
+	}, [])
 
-	// }, [])
-
-	// useEffect(() => {
-	// 	api.get('clients').then(response => {
-	// 		setClients(response.data)
-	// 	})
-	// 	setUpdatedData(false)
-	// }, [dataUpdated])
+	useEffect(() => {
+		api.get('clients').then(response => {
+			setClients(response.data)
+		})
+		setUpdatedData(false)
+	}, [dataUpdated])
 
 	const handleSubmit = async (data, { reset }, event) => {
 		event.persist();
@@ -79,6 +81,15 @@ const Clients = () => {
 		}
 	}
 
+	// const handleAddClient = useCallback(() => {
+	// 	dispatch(addClient(client))
+	// }, [dispatch])
+
+	const handleShowClientDetails = useCallback((id) => {
+		dispatch(getClientId(id))
+		history.push('clients/details')
+	}, [dispatch, history])
+
 	const handleOpenAddModal = () => {
 		setOpenAddModal(true);
 	}
@@ -100,6 +111,7 @@ const Clients = () => {
 							company_name={client.company_name}
 							person_in_charge={client.person_in_charge}
 							email={client.email}
+							onClick={() => handleShowClientDetails(client.id)}
 						/>
 					)
 				})}

@@ -2,7 +2,6 @@
 	"clients": [
 		{
 			"id": "1",
-			"image_url": "",
 			"is_company": true,
 			"company_name": "CONSTRUTORA SAMARIA",
 			"person_in_charge": "Bruno",
@@ -14,7 +13,6 @@
 		},
 		{
 			"id": "2",
-			"image_url": "",
 			"is_company": false,
 			"company_name": null,
 			"person_in_charge": "Eudes",

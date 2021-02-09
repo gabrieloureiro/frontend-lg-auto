@@ -6,6 +6,8 @@ import Header from "~/components/Header";
 import { Container } from "./styles";
 import { ThemeProvider } from "emotion-theming";
 import { lightTheme, darkTheme, colors } from "~/styles/themes";
+import { Provider } from 'react-redux';
+import store from '~/store';
 
 const LoggedLayout = ({ title, description, subtitle, children }) => {
 	const [collapsed, setCollapsed] = useState(true);
@@ -34,18 +36,20 @@ const LoggedLayout = ({ title, description, subtitle, children }) => {
 		<ThemeProvider
 			theme={!isDarkMode ? theme : (theme = { ...darkTheme, ...colors })}
 		>
-			<Head title={title} description={description} />
-			<Sidebar isLogged collapse={collapsed} />
-			<Topbar
-				collapse={collapsed}
-				handleCollapsed={handleCollapsed}
-				isDarkMode={isDarkMode}
-				handleTheme={handleTheme}
-			/>
-			<Container sideBarCollapse={collapsed}>
-				<Header title={title} subtitle={subtitle} />
-				{children}
-			</Container>
+			<Provider store={store}>
+				<Head title={title} description={description} />
+				<Sidebar isLogged collapse={collapsed} />
+				<Topbar
+					collapse={collapsed}
+					handleCollapsed={handleCollapsed}
+					isDarkMode={isDarkMode}
+					handleTheme={handleTheme}
+				/>
+				<Container sideBarCollapse={collapsed}>
+					<Header title={title} subtitle={subtitle} />
+					{children}
+				</Container>
+			</Provider>
 		</ThemeProvider>
 	);
 };
