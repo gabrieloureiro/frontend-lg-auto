@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { LoggedLayout as Layout } from "~/components/Layout";
 
 import api from '~/services/api';
@@ -21,8 +21,7 @@ const ClientsDetails = () => {
 			currentClient.is_company ?
 				currentClient.company_name :
 				currentClient.person_in_charge : 'Carregando...'
-		}>
-			{console.log(currentClient)}</Layout>
+		}></Layout>
 
 	)
 }

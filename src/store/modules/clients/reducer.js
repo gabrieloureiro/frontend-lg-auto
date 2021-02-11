@@ -1,16 +1,24 @@
+/* eslint-disable no-undef */
 import produce from 'immer';
+import api from '~/services/api';
 
-const INITIAL_STATE = [{}];
-
-const clients = (state = INITIAL_STATE, action) => {
+const clients = (state = [], action) => {
 	return produce(state, draft => {
 		switch (action.type) {
-			case 'ADD_CLIENT': {
-				const { client } = action.payload;
+			case 'CREATE_CLIENT': {
+				const client = action.payload;
 
-				draft.clients.push({ client })
+				draft.push(client);
 
-				break
+				api.post('clients', client);
+
+				break;
+			}
+
+			case 'READ_CLIENTS': {
+				const state = action.payload;
+
+				return state;
 			}
 
 			default: {

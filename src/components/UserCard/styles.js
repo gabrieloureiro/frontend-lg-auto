@@ -61,8 +61,6 @@ export const Image = styled.div`
 `;
 
 export const Name = styled.span`
-	display: flex;
-	justify-content: center;
 	padding: 16px 0;
 	color: ${props => props.theme.text};
 	cursor: text;

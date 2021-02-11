@@ -1,89 +1,51 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { LoggedLayout as Layout } from "~/components/Layout";
-import { formItems } from './formItems';
 
-import api from '~/services/api'
-
-import { useHistory } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-// import { addClient } from '~/store/modules/clients/actions';
-import { getClientId } from '~/store/modules/client/actions';
-
-// import { FiUser, FiMail, FiPhone, FiCheckCircle } from "react-icons/fi";
 import * as Yup from "yup";
 import getValidationErrors from "~/utils/getValidationErrors";
-import Input from '~/components/Input'
-import UserCard from "~/components/UserCard";
-import Modal from '~/components/Modal'
-import AddEntityButton from "../../components/AddEntityButton";
-import FormButton from '~/components/FormButton'
 
+import api from '~/services/api';
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+
+import { createClient, readClients } from '~/store/modules/clients/actions';
+import { getClientId } from '~/store/modules/client/actions';
+
+import { formItems } from './formItems';
+
+import { LoggedLayout as Layout } from "~/components/Layout";
+import Input from '~/components/Input';
+import UserCard from "~/components/UserCard";
+import Modal from '~/components/Modal';
+import AddEntityButton from "../../components/AddEntityButton";
+import FormButton from '~/components/FormButton';
 import { Form, Row } from './styles';
 
 const Clients = () => {
+
 	const formRef = useRef(null);
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	const [clients, setClients] = useState([])
 	const [openAddModal, setOpenAddModal] = useState(false);
-	const [dataUpdated, setUpdatedData] = useState(false)
+
+	const clients = useSelector(state => state.clients)
 
 	useEffect(() => {
 		api.get('clients').then(response => {
-			setClients(response.data)
+			dispatch(readClients(response.data))
 		})
-	}, [])
+	}, [dispatch])
 
-	useEffect(() => {
+	const handleCreateClient = useCallback((client) => {
+		dispatch(createClient(client))
+	}, [dispatch])
+
+	const handleReadClients = () => {
 		api.get('clients').then(response => {
-			setClients(response.data)
+			dispatch(readClients(response.data))
 		})
-		setUpdatedData(false)
-	}, [dataUpdated])
-
-	const handleSubmit = async (data, { reset }, event) => {
-		event.persist();
-		try {
-			formRef.current?.setErrors({});
-			const schema = Yup.object().shape({
-				company_name: Yup.string().required(),
-				person_in_charge: Yup.string().required(),
-				email: Yup.string()
-					.required()
-					.email(),
-				cpf: Yup.string().required(),
-				cnpj: Yup.string().required(),
-			});
-
-			await schema.validate(data, { abortEarly: false });
-
-			console.log("deucerto", data)
-
-			// api.post('clients', {
-			// 	is_company: true,
-			// 	company_name: data.company_name,
-			// 	person_in_charge: data.person_in_charge,
-			// 	cpf: data.cpf,
-			// 	cnpj: data.cnpj,
-			// 	email: data.email
-			// })
-
-			// event.target.reset();
-
-			handleCloseAddModal();
-			setUpdatedData(true);
-
-		} catch (err) {
-			const errors = getValidationErrors(err);
-			formRef.current?.setErrors(errors);
-		}
-	}
-
-	// const handleAddClient = useCallback(() => {
-	// 	dispatch(addClient(client))
-	// }, [dispatch])
+	};
 
 	const handleShowClientDetails = useCallback((id) => {
 		dispatch(getClientId(id))
@@ -96,6 +58,37 @@ const Clients = () => {
 
 	const handleCloseAddModal = () => {
 		setOpenAddModal(false);
+	}
+
+	const handleSubmit = async (data, { reset }, event) => {
+		event.persist();
+		try {
+			formRef.current?.setErrors({});
+
+			const schema = Yup.object().shape({
+				company_name: Yup.string().required(),
+				person_in_charge: Yup.string().required(),
+				email: Yup.string()
+					.required()
+					.email(),
+				cpf: Yup.string().required(),
+				cnpj: Yup.string().required(),
+			});
+
+			await schema.validate(data, { abortEarly: false });
+
+			handleCreateClient(data);
+
+			event.target.reset();
+
+			handleCloseAddModal();
+
+			handleReadClients();
+
+		} catch (err) {
+			const errors = getValidationErrors(err);
+			formRef.current?.setErrors(errors);
+		}
 	}
 
 	return (

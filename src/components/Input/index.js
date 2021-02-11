@@ -29,7 +29,6 @@ const Input = ({ name, fieldError, placeholder, icon: Icon, ...rest }) => {
 
 	return (
 		<>
-			{console.log(inputRef)}
 			<StyledInput
 				onChange={(event) => {
 					event.target.value !== "" ?

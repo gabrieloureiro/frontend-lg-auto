@@ -10,8 +10,6 @@ import history from "~/routes/history";
 
 import GlobalStyles from "~/styles/globalStyles";
 
-// @TODO Precisamos incluir o redux e a Store aqui
-
 const App = () => {
 	return (
 		<Provider store={store}>
