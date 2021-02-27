@@ -32,8 +32,8 @@ const Login = () => {
 						<Subtitle>Faça seu login na plataforma</Subtitle>
 					</Header>
 					<Form>
-						<Input type="email" placeholder="LOGIN" />
-						<Input type="password" placeholder="SENHA" />
+						<Input type="email" placeholder="LOGIN" id="login" />
+						<Input type="password" placeholder="SENHA" id="password" />
 						<Button onClick={() => history.push("/dashboard")}>Entrar</Button>
 					</Form>
 				</Content>

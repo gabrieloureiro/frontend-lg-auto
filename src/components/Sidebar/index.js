@@ -47,8 +47,9 @@ const Sidebar = ({ isLogged = false, collapse }) => {
 						{AVAILABLE_ROUTES.map((item, i) => {
 							if (item.icon !== 'details') {
 								return (
-									<NavigationItem key={item.icon + i}>
+									<NavigationItem key={item.icon + i} >
 										<NavigationLink
+											id={item.id}
 											to={item.routes[0].path}
 											active={currentRoute.includes(item.prefixUrlMatch)}
 										>

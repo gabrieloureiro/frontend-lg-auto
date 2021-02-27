@@ -12,9 +12,9 @@ nightmare
 	.wait(1500)
 	.click('.css-ph91xe')
 
-	.wait('#clients')
+	.wait('#suppliers')
 	.wait(1500)
-	.click('#clients')
+	.click('#suppliers')
 
 	.wait('.css-1vjlkep-Button')
 	.wait(1500)

@@ -14,6 +14,7 @@ export const AVAILABLE_ROUTES = [
 		title: "Dashboard",
 		prefixUrlMatch: "dashboard",
 		icon: "dashboard",
+		id: "dashboard",
 		routes: [
 			{
 				title: "Dashboard",
@@ -26,6 +27,7 @@ export const AVAILABLE_ROUTES = [
 		title: "Clientes",
 		prefixUrlMatch: "clients",
 		icon: "clients",
+		id: "clients",
 		routes: [
 			{
 				title: "Clientes",
@@ -38,6 +40,7 @@ export const AVAILABLE_ROUTES = [
 		title: "Clientes",
 		prefixUrlMatch: "clients/details",
 		icon: "details",
+		id: "clients-details",
 		routes: [
 			{
 				title: "Clientes",
@@ -50,6 +53,7 @@ export const AVAILABLE_ROUTES = [
 		title: "Fornecedores",
 		prefixUrlMatch: "suppliers",
 		icon: "suppliers",
+		id: "suppliers",
 		routes: [
 			{
 				title: "Fornecedores",
@@ -62,6 +66,7 @@ export const AVAILABLE_ROUTES = [
 		title: "Transações",
 		prefixUrlMatch: "transactions",
 		icon: "transactions",
+		id: "transactions",
 		routes: [
 			{
 				title: "Transações",
@@ -74,6 +79,7 @@ export const AVAILABLE_ROUTES = [
 		title: "Transferências",
 		prefixUrlMatch: "transfers",
 		icon: "transfers",
+		id: "payments",
 		routes: [
 			{
 				title: "Transferências",
